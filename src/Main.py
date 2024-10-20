@@ -1,11 +1,11 @@
 import customtkinter as ctk
-from FRMKeywords import open_keywords
+from TextAnalyzerAI.src.views.Keywords import open_keywords
 
 
 def main():
     root = ctk.CTk()
 
-    root.title("Mehrseitige Anwendung mit CustomTkinter")
+    root.title("Automatische Texterkennung")
     root.geometry("800x600")  # Setze die Standardgröße des Fensters
 
     # Titel der Startseite

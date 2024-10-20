@@ -5,7 +5,7 @@ from tkinter import Listbox, messagebox
 from PIL import Image
 
 # Pfad für die JSON-Datei
-json_file = "schlagworte.json"
+json_file = "C:/CodeProjekte/TextAnalyzerAI/TextAnalyzerAI/src/views_data/keywords.json"
 
 
 def open_keywords(parent):
@@ -58,16 +58,18 @@ def open_keywords(parent):
             new_plural = ctk.CTkInputDialog(text=f"Bearbeite Plural: {selected_value['plural']}",
                                             title="Eintrag bearbeiten").get_input()
 
-            if new_singular and new_plural:
+            if new_singular:
                 # JSON-Daten aktualisieren
                 schlagworte[selected_index]['singular'] = new_singular
+            elif new_plural:
                 schlagworte[selected_index]['plural'] = new_plural
 
-                # Neue Daten in die JSON-Datei speichern
-                save_schlagworte(schlagworte)
+            # Neue Daten in die JSON-Datei speichern
+            save_schlagworte(schlagworte)
 
-                # Listbox aktualisieren
-                update_schlagwort_liste()
+            # Listbox aktualisieren
+            update_schlagwort_liste()
+
         except IndexError:
             messagebox.showerror("Fehler", "Bitte einen Eintrag auswählen, um ihn zu bearbeiten.")
 

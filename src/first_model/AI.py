@@ -4,7 +4,7 @@
 
 import pandas as pd
 
-dataset = pd.read_csv('Training Data/cancer.csv')
+dataset = pd.read_csv('../training_data/cancer.csv')
 
 # y-Attribut -> melignant oder benin
 # x-Attribut -> alle Features

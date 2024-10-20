@@ -6,7 +6,7 @@ from sklearn.metrics import accuracy_score
 import joblib
 
 # Beispiel-Daten laden (CSV-Datei mit Text und Label)
-df = pd.read_csv('Training Data/synthetic_medical_training_1000000.csv')
+df = pd.read_csv('training_data/synthetic_medical_training_1000000.csv')
 
 # Train-Test-Split
 X_train, X_test, y_train, y_test = train_test_split(df['Text'], df['Label'], test_size=0.2, random_state=42)
@@ -28,9 +28,9 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f"Genauigkeit: {accuracy * 100:.2f}%")
 
 # Speichern des Modells
-joblib.dump(model, 'Trained Model/druckschmerz_model.pkl')
+joblib.dump(model, 'trained_model/brainy_smurf.pkl')
 
 # Speichern des TF-IDF-Vektorisierers
-joblib.dump(vectorizer, 'Trained Model/tfidf_vectorizer.pkl')
+joblib.dump(vectorizer, 'trained_model/tfidf_vectorizer.pkl')
 
 print("Das Modell und der Vektorisierer wurden erfolgreich gespeichert.")

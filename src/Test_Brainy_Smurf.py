@@ -1,8 +1,8 @@
 import joblib
 
 # Geladenes Modell und Vektorisierer
-model = joblib.load('Trained Model/druckschmerz_model.pkl')
-vectorizer = joblib.load('Trained Model/tfidf_vectorizer.pkl')
+model = joblib.load('trained_model/brainy_smurf.pkl')
+vectorizer = joblib.load('trained_model/tfidf_vectorizer.pkl')
 
 
 def check_druckschmerz(text, keyword, model, vectorizer):
