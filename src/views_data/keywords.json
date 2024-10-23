@@ -1,10 +1,46 @@
 [
     {
-        "singular": "Hande",
-        "plural": "H\u00e4nde"
+        "singular": "Patella",
+        "plural": "-"
     },
     {
-        "singular": "Patella",
+        "singular": "Peroneus",
+        "plural": "-"
+    },
+    {
+        "singular": "Tibiakopf",
+        "plural": "-"
+    },
+    {
+        "singular": "Condylus",
+        "plural": "-"
+    },
+    {
+        "singular": "Rectus",
+        "plural": "-"
+    },
+    {
+        "singular": "Vastus medialis",
+        "plural": "-"
+    },
+    {
+        "singular": "Bauchdecke",
+        "plural": "-"
+    },
+    {
+        "singular": "Soleus 2",
+        "plural": "-"
+    },
+    {
+        "singular": "Gluteus medius",
+        "plural": "-"
+    },
+    {
+        "singular": "Trapezius",
+        "plural": "-"
+    },
+    {
+        "singular": "Leiste",
         "plural": "-"
     }
 ]

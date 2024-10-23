@@ -1,5 +1,7 @@
 import customtkinter as ctk
 from TextAnalyzerAI.src.views.Keywords import open_keywords
+from TextAnalyzerAI.src.views.Read_File import open_read_file
+from TextAnalyzerAI.src.views.Statistics import open_statistics_window
 
 
 def main():
@@ -17,11 +19,11 @@ def main():
     button.pack(pady=10)
 
     # Button, um zur Einstellungen-Seite zu wechseln
-    button = ctk.CTkButton(root, width=250, height=70, font=("Arial", 18), text="Word-Datei einlesen")
+    button = ctk.CTkButton(root, width=250, height=70, font=("Arial", 18), text="Word-Datei einlesen", command=lambda:open_read_file(root))
     button.pack(pady=10)
 
     # Button, um zur Einstellungen-Seite zu wechseln
-    button = ctk.CTkButton(root, width=250, height=70, font=("Arial", 18), text="Statistik auslesen")
+    button = ctk.CTkButton(root, width=250, height=70, font=("Arial", 18), text="Statistik auslesen", command=lambda:open_statistics_window(root))
     button.pack(pady=10)
 
     # Hauptschleife starten

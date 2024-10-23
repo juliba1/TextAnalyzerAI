@@ -1,8 +1,8 @@
 import joblib
 
 # Geladenes Modell und Vektorisierer
-model = joblib.load('trained_model/brainy_smurf.pkl')
-vectorizer = joblib.load('trained_model/tfidf_vectorizer.pkl')
+model = joblib.load('../trained_model/brainy_smurf.pkl')
+vectorizer = joblib.load('../trained_model/tfidf_vectorizer.pkl')
 
 
 def check_druckschmerz(text, keyword, model, vectorizer):
@@ -43,6 +43,7 @@ test_cases = [
     ("Rotation der Hände in Beugung seitengleich. Die Außenrotation ist rechts etwas weniger.", "Hände"),
     ("Diskretes Streckdefizit des rechten Kniegelenkes. Kein Schmerz bei forcierter Kniestreckung.", "Knie"),
     ("Fingerstrecker beidseits, rechts stärker.", "Fingerstrecker"),
+    ("Das Haus hat einen schönen Garten.", "Haus")
 ]
 
 # Teste jedes Stichwort und jeden Text

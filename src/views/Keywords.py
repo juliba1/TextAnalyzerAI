@@ -3,9 +3,10 @@ import json
 import os
 from tkinter import Listbox, messagebox
 from PIL import Image
+import TextAnalyzerAI.src.classes.Constants as Constants
 
 # Pfad für die JSON-Datei
-json_file = "C:/CodeProjekte/TextAnalyzerAI/TextAnalyzerAI/src/views_data/keywords.json"
+json_file = Constants.get_keywords_path()
 
 
 def open_keywords(parent):
