@@ -1,41 +1,45 @@
 {
-  "directory": "C:/Temp/Dr-Schreiner/GeneratedFiles",
-  "statistics": [
-    {
-      "keyword": "Peroneus",
-      "count": 1
-    },
-    {
-      "keyword": "Tibiakopf",
-      "count": 1
-    },
-    {
-      "keyword": "Patella",
-      "count": 1
-    },
-    {
-      "keyword": "Rectus",
-      "count": 1
-    },
-    {
-      "keyword": "Vastus medialis",
-      "count": 1
-    },
-    {
-      "keyword": "Leiste",
-      "count": 2
-    },
-    {
-      "keyword": "Soleus 2",
-      "count": 1
-    },
-    {
-      "keyword": "Gluteus medius",
-      "count": 3
-    },
-    {
-      "keyword": "Trapezius",
-      "count": 1
-    }
-  ]
+    "directory": "C:/Temp/Dr-Schreiner/GeneratedFiles",
+    "statistics": [
+        {
+            "keyword": "Peroneus",
+            "count": 28
+        },
+        {
+            "keyword": "Tibiakopf",
+            "count": 28
+        },
+        {
+            "keyword": "Patella",
+            "count": 28
+        },
+        {
+            "keyword": "Rectus",
+            "count": 28
+        },
+        {
+            "keyword": "Vastus medialis",
+            "count": 28
+        },
+        {
+            "keyword": "Leiste",
+            "count": 56
+        },
+        {
+            "keyword": "Soleus 2",
+            "count": 28
+        },
+        {
+            "keyword": "Gluteus medius",
+            "count": 84
+        },
+        {
+            "keyword": "Trapezius",
+            "count": 28
+        },
+        {
+            "keyword": "Condylus",
+            "count": 25
+        }
+    ]
 }

@@ -52,7 +52,6 @@ def find_sentences_with_keyword(sentences):
         for keyword in get_keywords():
             if keyword.lower() in sentence.lower():
                 matching_sentences.append((sentence, keyword))
-                break
 
     return matching_sentences
 

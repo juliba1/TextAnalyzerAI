@@ -1,9 +1,11 @@
 import customtkinter as ctk
 import os
 import json
-from tkinter import filedialog, messagebox
+from tkinter import filedialog
 from TextAnalyzerAI.src.classes.Analyzer import analyze_file
 import TextAnalyzerAI.src.classes.Constants as Constants
+import threading
+import time
 
 # Pfad für die JSON-Datei
 settings_file = Constants.get_settings_path()
@@ -71,14 +73,40 @@ def open_read_file(parent):
                     settings['eingelesene_dateien'].append(datei)
                     save_settings(settings)
 
+                    show_progressbar()
+                    progressbar.set(0.0)
+                    progressbar.update_idletasks()
+
                     label_state.configure(text="Status: Datei wird analysiert...", text_color="orange")
-                    # Hier könntest du den Code zum tatsächlichen Auslesen der Datei einfügen
-                    analyze_file(datei_pfad)
-                    label_state.configure(text="Status: Datei wurde analysiert", text_color="green")
+                    label_state.update_idletasks()
+
+                    threading.Thread(target=analyze_and_update, args=(datei_pfad,)).start()
+
             else:
                 label_state.configure(text="Status: Datei existiert nicht", text_color="red")
         else:
             label_state.configure(text="Status: Bitte Pfad und Datei auswählen", text_color="red")
+
+    def analyze_and_update(datei_pfad):
+        analyze_file(datei_pfad)
+
+        for i in range(10):
+            time.sleep(0.1)
+            progressbar.set((i + 1) / 10)  # Schrittweise Erhöhung um 1/15
+            progressbar.update_idletasks()
+
+        # Ensure the progress bar stops at 100%
+        progressbar.set(1.0)
+        progressbar.update_idletasks()
+
+        hide_progressbar()
+        label_state.configure(text="Status: Datei wurde analysiert", text_color="green")
+
+    def hide_progressbar():
+        progressbar.grid_remove()
+
+    def show_progressbar():
+        progressbar.grid()
 
     read_file_window = ctk.CTkToplevel(parent)
     read_file_window.geometry("750x400")
@@ -122,6 +150,12 @@ def open_read_file(parent):
     label_state = ctk.CTkLabel(read_file_window, text="Status: Nichts wird analysiert", font=("Arial", 16))
     label_state.grid(row=3, column=0, padx=(outer_padding, 10), pady=10, sticky="ew")
 
+    progressbar = ctk.CTkProgressBar(read_file_window)
+    progressbar.configure(mode="determinate")
+    progressbar.set(0.0)
+    progressbar.grid(row=4, column=0, padx=(outer_padding, 10), pady=10, sticky="ew")
+    hide_progressbar()
+
     # Button "Datei auslesen"
     button_datei_auslesen = ctk.CTkButton(
         read_file_window,
@@ -129,7 +163,7 @@ def open_read_file(parent):
         height=50,
         font=("Arial", 18),
         command=datei_auslesen)
-    button_datei_auslesen.grid(row=3, column=1, padx=(10, outer_padding), pady=10, sticky="ew")
+    button_datei_auslesen.grid(row=3, rowspan=2, column=1, padx=(10, outer_padding), pady=10, sticky="ew")
 
     # Button "zum Hauptmenü"
     button_zum_hauptmenue = ctk.CTkButton(
@@ -138,7 +172,7 @@ def open_read_file(parent):
         height=50,
         font=("Arial", 18),
         command=read_file_window.destroy)
-    button_zum_hauptmenue.grid(row=4, column=0, columnspan=2, padx=outer_padding, pady=10, sticky="ew")
+    button_zum_hauptmenue.grid(row=5, column=0, columnspan=2, padx=outer_padding, pady=10, sticky="ew")
 
     # Grid-Konfiguration
     read_file_window.grid_columnconfigure(0, weight=1)
