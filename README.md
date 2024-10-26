@@ -11,3 +11,5 @@ Diese Anwendung nutzt ein trainiertes KI-Modell, um Word-Dateien basierend auf, 
 - **Dokumentanalyse**: Basierend auf den definierten Schlagwörtern kann die Software Word-Dokumente analysieren und wertvolle Erkenntnisse über Druckschmerzen liefern.
 - **KI-gestützte Auswertung**: Das integrierte KI-Modell verarbeitet die Dokumente und liefert präzise Analysen und Bewertungen.
 - **Statistikerstellung**: Zusätzlich zur Analyse kann die Software umfassende Statistiken generieren, die wertvolle Informationen über die Häufigkeit und Relevanz der verwendeten Schlagwörter bieten.
+
+**Notiz:** Dieses Projekt dient nur als Beispiel, es ist nicht lauffähig da einige personenbezogene Daten fehlen.
