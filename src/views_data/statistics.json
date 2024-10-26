@@ -3,43 +3,43 @@
     "statistics": [
         {
             "keyword": "Peroneus",
-            "count": 28
+            "count": 29
         },
         {
             "keyword": "Tibiakopf",
-            "count": 28
+            "count": 29
         },
         {
             "keyword": "Patella",
-            "count": 28
+            "count": 29
         },
         {
             "keyword": "Rectus",
-            "count": 28
+            "count": 29
         },
         {
             "keyword": "Vastus medialis",
-            "count": 28
+            "count": 29
         },
         {
             "keyword": "Leiste",
-            "count": 56
+            "count": 58
         },
         {
             "keyword": "Soleus 2",
-            "count": 28
+            "count": 29
         },
         {
             "keyword": "Gluteus medius",
-            "count": 84
+            "count": 87
         },
         {
             "keyword": "Trapezius",
-            "count": 28
+            "count": 29
         },
         {
             "keyword": "Condylus",
-            "count": 25
+            "count": 26
         }
     ]
 }

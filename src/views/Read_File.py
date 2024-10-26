@@ -1,3 +1,4 @@
+import queue
 import customtkinter as ctk
 import os
 import json
@@ -7,11 +8,22 @@ import TextAnalyzerAI.src.classes.Constants as Constants
 import threading
 import time
 
+from TextAnalyzerAI.src.views.Analysis import open_analysis_window
+
 # Pfad für die JSON-Datei
 settings_file = Constants.get_settings_path()
 
 
 def open_read_file(parent):
+    analysis_output_queue = queue.Queue()
+
+    def check_queue():
+        try:
+            analysis_output = analysis_output_queue.get_nowait()
+            open_analysis_window(parent, analysis_output)
+        except queue.Empty:
+            parent.after(100, check_queue)
+
     def init_settings():
         settings = load_settings()
         if 'verzeichnis' in settings:
@@ -80,20 +92,24 @@ def open_read_file(parent):
                     label_state.configure(text="Status: Datei wird analysiert...", text_color="orange")
                     label_state.update_idletasks()
 
-                    threading.Thread(target=analyze_and_update, args=(datei_pfad,)).start()
-
+                    threading.Thread(target=analyze_and_update, args=(datei_pfad,analysis_output_queue)).start()
+                    parent.after(100, check_queue)
             else:
                 label_state.configure(text="Status: Datei existiert nicht", text_color="red")
         else:
             label_state.configure(text="Status: Bitte Pfad und Datei auswählen", text_color="red")
 
-    def analyze_and_update(datei_pfad):
-        analyze_file(datei_pfad)
-
+    def analyze_and_update(datei_pfad, analysis_output_queue):
         for i in range(10):
             time.sleep(0.1)
             progressbar.set((i + 1) / 10)  # Schrittweise Erhöhung um 1/15
             progressbar.update_idletasks()
+
+        if show_analysis.get():
+            analysis_output = analyze_file(datei_pfad, show_analysis.get())  # Replace with your actual analysis function
+            analysis_output_queue.put(analysis_output)
+        else:
+            analyze_file(datei_pfad, show_analysis.get())
 
         # Ensure the progress bar stops at 100%
         progressbar.set(1.0)
@@ -163,7 +179,11 @@ def open_read_file(parent):
         height=50,
         font=("Arial", 18),
         command=datei_auslesen)
-    button_datei_auslesen.grid(row=3, rowspan=2, column=1, padx=(10, outer_padding), pady=10, sticky="ew")
+    button_datei_auslesen.grid(row=3, column=1, padx=(10, outer_padding), pady=10, sticky="ew")
+
+    #Checkbox "Show Analysis"
+    show_analysis = ctk.CTkCheckBox(read_file_window, text="Show Analysis", font=("Arial", 16))
+    show_analysis.grid(row=4, column=1, padx=(10, outer_padding), pady=10, sticky="ew")
 
     # Button "zum Hauptmenü"
     button_zum_hauptmenue = ctk.CTkButton(

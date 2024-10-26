@@ -42,5 +42,9 @@
     {
         "singular": "Leiste",
         "plural": "-"
+    },
+    {
+        "singular": "Hand",
+        "plural": "H\u00e4nde"
     }
 ]

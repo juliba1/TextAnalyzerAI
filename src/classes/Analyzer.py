@@ -56,7 +56,7 @@ def find_sentences_with_keyword(sentences):
     return matching_sentences
 
 
-def update_statistics(keyword):
+def update_statistics(keywords):
     if os.path.exists(json_statistics):
         with open(json_statistics, 'r', encoding='utf-8') as file:
             data = json.load(file)
@@ -64,26 +64,31 @@ def update_statistics(keyword):
         data = {"statistics": [], "directory": ""}
 
     # Check if the keyword already exists in the statistics
-    keyword_found = False
-    for entry in data["statistics"]:
-        if entry['keyword'] == keyword:
-            entry['count'] += 1
-            keyword_found = True
-            break
+    for keyword in keywords:
+        keyword_found = False
+        for entry in data["statistics"]:
+            if entry['keyword'] == keyword:
+                entry['count'] += 1
+                keyword_found = True
+                break
 
-    if not keyword_found:
-        data["statistics"].append({"keyword": keyword, "count": 1})
+        if not keyword_found:
+            data["statistics"].append({"keyword": keyword, "count": 1})
 
     with open(json_statistics, 'w', encoding='utf-8') as file:
         json.dump(data, file, indent=4)
 
 
-def analyze_file(file_path):
+def analyze_file(file_path, show_output):
     text = read_word_file(file_path)
     sentences = split_into_sentences(text)
     matching_sentences = find_sentences_with_keyword(sentences)
 
-    for sentence, keyword in matching_sentences:
-        result = ask_brainy_smurf(sentence, keyword)
-        if result == 1:
-            update_statistics(keyword)
+    if not show_output:
+        output = [keyword for sentence, keyword in matching_sentences if ask_brainy_smurf(sentence, keyword) == 1]
+        update_statistics(output)
+        return
+    else:
+        output = [(sentence, keyword, ask_brainy_smurf(sentence, keyword)) for sentence, keyword in matching_sentences]
+
+    return output
