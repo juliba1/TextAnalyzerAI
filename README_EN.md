@@ -11,3 +11,5 @@ This application utilizes a trained AI model to evaluate and analyze Word files 
 - **Document Analysis**: Based on the defined keywords, the software can analyze Word documents and provide valuable insights regarding tenderness.
 - **AI-Powered Evaluation**: The integrated AI model processes the documents and delivers precise analyses and evaluations.
 - **Statistics Generation**: In addition to analysis, the software can generate comprehensive statistics that offer valuable information about the frequency and relevance of the used keywords.
+
+**Side Note:** This project only serves as an example, it is not executable as some personal data is missing.
