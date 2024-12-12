@@ -125,7 +125,7 @@ def open_read_file(parent):
         progressbar.grid()
 
     read_file_window = ctk.CTkToplevel(parent)
-    read_file_window.geometry("750x400")
+    read_file_window.geometry("750x450")
     read_file_window.title("Word-Datei einlesen")
 
     # Padding-Werte für außen (15 Pixel)
@@ -144,7 +144,7 @@ def open_read_file(parent):
     # Button "Pfad auswählen"
     button_pfad_auswaehlen = ctk.CTkButton(
         read_file_window,
-        text="Pfad auswählen",
+        text="Verzeichnis auswählen",
         height=50,
         font=("Arial", 18),
         command=pfad_auswaehlen)
@@ -164,26 +164,29 @@ def open_read_file(parent):
     button_datei_auswaehlen.grid(row=2, column=1, padx=(10, outer_padding), pady=10, sticky="ew")
 
     label_state = ctk.CTkLabel(read_file_window, text="Status: Nichts wird analysiert", font=("Arial", 16))
-    label_state.grid(row=3, column=0, padx=(outer_padding, 10), pady=10, sticky="ew")
+    label_state.grid(row=3, column=0, columnspan=2, padx=(outer_padding, 10), pady=10, sticky="ew")
 
     progressbar = ctk.CTkProgressBar(read_file_window)
     progressbar.configure(mode="determinate")
     progressbar.set(0.0)
-    progressbar.grid(row=4, column=0, padx=(outer_padding, 10), pady=10, sticky="ew")
+    progressbar.grid(row=4, column=0, columnspan=2, padx=(outer_padding, 10), pady=10, sticky="ew")
     hide_progressbar()
 
     # Button "Datei auslesen"
     button_datei_auslesen = ctk.CTkButton(
         read_file_window,
-        text="Datei auslesen",
+        text="Datei analysieren",
         height=50,
         font=("Arial", 18),
-        command=datei_auslesen)
-    button_datei_auslesen.grid(row=3, column=1, padx=(10, outer_padding), pady=10, sticky="ew")
+        command=datei_auslesen,
+        fg_color="#00ad09",
+        hover_color="#009408",
+    )
+    button_datei_auslesen.grid(row=5, column=0, padx=(10, outer_padding), pady=10, sticky="ew")
 
-    #Checkbox "Show Analysis"
-    show_analysis = ctk.CTkCheckBox(read_file_window, text="Show Analysis", font=("Arial", 16))
-    show_analysis.grid(row=4, column=1, padx=(10, outer_padding), pady=10, sticky="ew")
+    # Checkbox "Show Analysis"
+    show_analysis = ctk.CTkCheckBox(read_file_window, text="Ergebniss anzeigen", font=("Arial", 16))
+    show_analysis.grid(row=5, column=1, padx=(10, outer_padding), pady=10, sticky="ew")
 
     # Button "zum Hauptmenü"
     button_zum_hauptmenue = ctk.CTkButton(
@@ -192,7 +195,7 @@ def open_read_file(parent):
         height=50,
         font=("Arial", 18),
         command=read_file_window.destroy)
-    button_zum_hauptmenue.grid(row=5, column=0, columnspan=2, padx=outer_padding, pady=10, sticky="ew")
+    button_zum_hauptmenue.grid(row=6, column=0, columnspan=2, padx=150, pady=(50, 10), sticky="ew")
 
     # Grid-Konfiguration
     read_file_window.grid_columnconfigure(0, weight=1)
@@ -202,7 +205,8 @@ def open_read_file(parent):
     read_file_window.grid_rowconfigure(2, weight=0)
     read_file_window.grid_rowconfigure(3, weight=0)
     read_file_window.grid_rowconfigure(4, weight=0)
-    read_file_window.grid_rowconfigure(5, weight=1)
+    read_file_window.grid_rowconfigure(5, weight=0)
+    read_file_window.grid_rowconfigure(6, weight=1)
 
     init_settings()  # Einstellungen initialisieren
 

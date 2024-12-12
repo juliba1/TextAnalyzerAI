@@ -1,45 +1,45 @@
 {
-    "directory": "C:/Temp/Dr-Schreiner/GeneratedFiles",
     "statistics": [
         {
             "keyword": "Peroneus",
-            "count": 29
+            "count": 35
         },
         {
             "keyword": "Tibiakopf",
-            "count": 29
+            "count": 36
         },
         {
             "keyword": "Patella",
-            "count": 29
+            "count": 36
         },
         {
             "keyword": "Rectus",
-            "count": 29
+            "count": 36
         },
         {
             "keyword": "Vastus medialis",
-            "count": 29
+            "count": 36
         },
         {
             "keyword": "Leiste",
-            "count": 58
+            "count": 72
         },
         {
             "keyword": "Soleus 2",
-            "count": 29
+            "count": 36
         },
         {
             "keyword": "Gluteus medius",
-            "count": 87
+            "count": 108
         },
         {
             "keyword": "Trapezius",
-            "count": 29
+            "count": 36
         },
         {
             "keyword": "Condylus",
-            "count": 26
+            "count": 33
         }
-    ]
+    ],
+    "directory": ""
 }

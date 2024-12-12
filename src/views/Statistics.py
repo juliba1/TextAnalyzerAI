@@ -61,7 +61,7 @@ def open_statistics_window(parent):
 
     statistics_window.grab_set()
 
-    label_title = ctk.CTkLabel(statistics_window, text="Statistics", font=("Arial", 20))
+    label_title = ctk.CTkLabel(statistics_window, text="Aufgenommene Werte", font=("Arial", 20))
     label_title.grid(row=0, column=0, columnspan=4, padx=outer_padding, pady=(outer_padding, 10), sticky="ew")
 
     # Configure Treeview style
